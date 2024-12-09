@@ -1,0 +1,58 @@
+/* Ensure html and body take up the full height */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Root container to ensure layout is flexible */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Main content grows to take available space */
+.content {
+  flex: 1; /* Pushes the footer down */
+}
+
+/* Footer styling */
+.footer_conatiner {
+  /* background: linear-gradient(120deg, #0D1B2A, #1B263B, #415A77); */
+  color: #E0E1DD;
+  padding: 20px;
+  text-align: center;
+}
+
+footer h5 {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+footer a {
+  color: #07c3de;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #cf6700;
+}
+
+footer .social-icons a {
+  font-size: 1.5rem;
+  transition: transform 0.3s;
+}
+
+footer .social-icons a:hover {
+  transform: scale(1.1);
+  color: #778DA9;
+}
+
+@media (max-width: 768px) {
+  .footer_conatiner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}

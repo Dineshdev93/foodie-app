@@ -1,0 +1,19 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Philosopher', sans-serif;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    /* display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0; */
+  }
+  .bg{
+    /* background: linear-gradient(180deg, #000000 0%, #032b2e 100%); */
+    /* background: linear-gradient(120deg, #E8F5E9, #C8E6C9, #81C784); */
+    /* background: linear-gradient(120deg, #FBE7C6, #FFCCB6, #FAE3D9); */
+    background: linear-gradient(120deg, #F8B400, #E94B3C, #662D91);
+  }
+
+  

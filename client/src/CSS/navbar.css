@@ -1,0 +1,87 @@
+.main-section .container{
+  width: 50%;
+}
+.header_conatiner{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.header_conatiner a{
+    color: white;
+}
+.navbutton{
+    background-color: #ffffff;
+    font-weight: 500;
+    color: #000 !important;
+    border: none;
+    padding: 4px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+.navbutton:hover{
+  background-color: rgb(42 96 213);
+  color: white !important;
+}
+.navbar-nav a{
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+.navbar-nav a:hover{
+  color: #DEB06D;
+}
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
+  color: #fff !important;
+}
+.btn:hover {
+  color: white !important;
+}
+/* General dropdown styles */
+.dropdown-toggle::after {
+  content: none !important; /* Removes the arrow icon */
+}
+
+/* Remove background on dropdown menu */
+.dropdown-menu {
+  background-color: #052228 !important;
+  box-shadow: none !important; /* Removes shadow */
+  padding: 0; /* Adjust padding if needed */
+  color: white !important;
+}
+
+/* Style dropdown items */
+.dropdown-item {
+  padding: 10px 15px;
+  color: #000; /* Set text color */
+}
+
+.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
+  color: #fff; /* Change text color on hover */
+}
+
+/* Profile image styles */
+.rounded-circle {
+  border: 2px solid white;
+  object-fit: cover;
+}
+ 
+
+@media (max-width: 768px) {
+    .small_navbar_css {
+      background-color: #00345482; 
+      padding: 12px 20px; 
+      border-radius: 10px; 
+    }
+  }
+  
+   .modal-backdrop{
+    position:static !important;
+  }
+
+  .userProfile img{
+      border-radius: 100px;
+  }
