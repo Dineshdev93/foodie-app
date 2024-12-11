@@ -1,0 +1,100 @@
+.recipeSection .recipeCard{
+    cursor: pointer;
+}
+.recipeSection  .card{
+    width: 25rem;
+    height: 100%;
+}
+.recipeSection .card .card-body a{
+    font-weight: 700;
+    letter-spacing: 1px;
+    width: 18rem;
+    font-size: 21px;
+    text-decoration: none;
+    background-color: #fff;
+    padding-left: 39px !important;
+    padding-right: 39px !important;
+    padding: 10px;
+    color: #F47822 !important;
+    border-radius: 13px;
+    border: 1px solid #606060;
+}
+.recipeSection .card .card-body a:hover{
+   /* border:2px solid #F47822; */
+   background-color: #F4A284;
+   color: #fff !important;
+   
+}
+.recipeSection .card .card-img-top{
+  height: 14rem;
+}
+/* .saerch-section .searchInput{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid gray;
+    outline: none;
+    border-radius: 10px;
+}
+.saerch-section .searchInput::placeholder{
+    font-size: 20px;
+}
+.saerch-section .cross-icon{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+} */
+.saerch-section {
+    position: relative;
+  }
+  
+  .saerch-section .searchInput {
+    width: 100%;
+    padding: 12px 45px 12px 15px;
+    border: 1px solid #ddd;
+    outline: none;
+    border-radius: 30px;
+    font-size: 18px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .saerch-section .searchInput:focus {
+    border: 1px solid #d35f12; /* Matches your button color */
+    box-shadow: 0 4px 8px rgba(233, 138, 75, 0.479);
+  }
+  
+  .saerch-section .searchInput::placeholder {
+    font-size: 16px;
+    color: #aaa;
+    
+  }
+  
+  .saerch-section .cross-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  
+   .next-previious-icon .icon{
+    color: #973c00;
+  }
+  .next-previious-icon .icon:hover{
+    transform: scale(1.4);
+  }
+  
+  
+  
+  
+
+@media( max-width:768px ){
+    .recipeSection  .card{
+        width: 100%;
+    }
+}

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "../CSS/home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import {UserContext} from '../context/Usercontext'
+import { useContext } from "react";
 export default function Home() {
   const [pizaaimg, setPizaaImg] = useState("./pizaa.png");
   const [dishplatecontent, setDishplateContent] = useState(
@@ -21,6 +23,9 @@ export default function Home() {
     setAnimationKey((prevKey) => prevKey + 1); // Increment animation key
     setDishplateKey((prevKey) => prevKey + 1);
   };
+ 
+  // validation for user 
+   const {user}  = useContext(UserContext)
 
   return (
     <>
@@ -41,7 +46,7 @@ export default function Home() {
                 memorable.
               </p>
               <div className="hero-buttons mt-5">
-                <a href="/recipes" className=" me-3">
+                <a href="/allrecipes" className=" me-3">
                   Explore Recipes{" "}
                   <span>
                     <FontAwesomeIcon
@@ -68,11 +73,11 @@ export default function Home() {
               <p>{recipe}</p>
               <div className="hero-buttons mt-3 d-flex">
                 <a
-                  href="/recipes"
+                  href={user ? "/createRecipe" : "/login"}
                   className="text-center"
                   style={{ marginTop: "4rem" }}
                 >
-                  Create Recipe{" "}
+                  Create Recipe
                   <span>
                     <FontAwesomeIcon
                       className="arrow-icon"

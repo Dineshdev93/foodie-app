@@ -54,7 +54,7 @@ const Header = () => {
                 <div className="d-flex justify-content-center align-items-center">
                 <div className="d-flex flex-column mt-3">
                     <div className="d-flex justify-content-start align-items-center gap-2">
-                         <h3><FontAwesomeIcon icon={faUser}/> : </h3> <span className="fs-5">{data.firstname} &nbsp; {data.atlastname}</span>
+                         <h3><FontAwesomeIcon icon={faUser}/> : </h3> <span className="fs-5">{data.firstname}  {data.lastname}</span>
                     </div>
                     <div className="d-flex justify-content-start align-items-start gap-2">
                          <h3><FontAwesomeIcon icon={faEnvelope}/></h3> &nbsp; <span className="fs-5">{data.email}</span>
@@ -123,7 +123,7 @@ const Header = () => {
               {
                 user ? 
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/createRecipe">
                   Create Recipe
                 </a>
               </li>

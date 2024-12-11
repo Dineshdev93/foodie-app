@@ -9,7 +9,8 @@ import { Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Forgotpassword from "./pages/Forgotpassword";
 import ResetPassword from "./pages/ResetPassword";
-
+import Createrecipe from "./pages/Createrecipe";
+import AllRecipes from "./pages/AllRecipes";
 function App() {
   return (
     <>
@@ -36,6 +37,9 @@ function App() {
           path="/resetpassword/:id/:token"
           element={<ResetPassword />}
         />
+        {/* Recipe Routes */}
+        <Route path="/createRecipe" element={<Createrecipe/>}/>
+        <Route path="/allrecipes" element={<AllRecipes/>}/>
       </Routes>
       <Footer />
     </>

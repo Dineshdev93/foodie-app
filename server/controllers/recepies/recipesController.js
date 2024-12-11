@@ -4,30 +4,37 @@ const cloudinary = require("../../cloudinary/cloudinary");
 //  create recipe controller
 exports.createRecipe = async (req, res) => {
   const file = req.file ? req.file.path : "";
+  const { recipename, discription, ingradients, instruction, cookingtime } = req.body;
 
-  const { recipename, discription, ingradients, instruction, cookingtime } =
-    req.body;
-  if (!recipename || !discription || !ingradients || !cookingtime || !file) {
-    res.status(400).json("Please provide all details");
+  // Validate input fields
+  if (!recipename || !discription || !ingradients  || !cookingtime || !file) {
+    return res.status(400).json({ error: "Please provide all details" });
   }
-
-  const upload = await cloudinary.uploader.upload(file);
+  const ingredientsArray = JSON.parse(ingradients);
   try {
+    // Upload the file to Cloudinary
+    const upload = await cloudinary.uploader.upload(file);
+
+    // Create recipe data object
     const recipedata = new recipeDb({
-      userId: req.userid,
+      userId: req.userid, // Make sure this is set correctly
       recipename,
       discription,
-      ingradients,
+      ingradients : ingredientsArray,
       cookingtime,
       instruction,
-      recipeImg: upload.secure_url,
+      recipeImg: upload.secure_url, // Save the Cloudinary URL
     });
 
+    // Save recipe data to database
     await recipedata.save();
+    
+    // Send response with success message and the saved recipe data
     res.status(200).json({ msg: "Recipe created successfully", recipedata });
   } catch (error) {
-    res.status(500).json("catch block error create recipe");
-    console.log(error);
+    // Handle unexpected errors
+    console.error(error);
+    res.status(500).json({ error: "Server error while creating recipe", details: error.message });
   }
 };
 
@@ -95,7 +102,7 @@ exports.getAlldatawithserchpagination = async (req, res) => {
   const { search, page } = req.query;
   const searchValue = search || "";
   const pageNum = page && page > 0 ? page : 1;
-  const Item_per_page = 4;
+  const Item_per_page = 6;
 
   // const query = {
   //   recipename: { $regex: searchValue, $options: "i" },

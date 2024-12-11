@@ -158,9 +158,7 @@
 
 
   /* new exp */
-  .baner-section .container{
-    max-width: 1426px;
-  }
+  
   .baner-section{
     background: linear-gradient(135deg, #fefefe 50%, #f2f2f2);
   padding: 77px 0;

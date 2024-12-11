@@ -1,0 +1,136 @@
+.recipe-form-container {
+   
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .recipe-form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .recipe-form label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .recipe-form input,
+  .recipe-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .recipe-form textarea {
+    resize: vertical;
+    height: 80px;
+  }
+  
+  .ingredient-field {
+    margin-bottom: 10px;
+  }
+  
+  .add-ingredient {
+    display: inline-block;
+    margin-top: 10px;
+    
+    background: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .add-ingredient:hover {
+    background: #218838;
+  }
+  
+  .submit-button {
+    font-weight: 700;
+    letter-spacing: 1px;
+    width: 100%;
+    font-size: 21px;
+    text-decoration: none;
+    background-color: #fff;
+    padding-left: 39px !important;
+    padding-right: 39px !important;
+    padding: 10px;
+    color: #F47822 !important;
+    border-radius: 13px;
+    border: 1px solid #606060;
+  }
+  
+  .submit-button:hover {
+    background: linear-gradient(180deg, #000000, #0b0e0b, #0e130e);
+    color: #ffffff;
+    border: 2px solid #41543e;
+  }
+
+  .ingredients-row {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping to a new row when necessary */
+    gap: 16px; /* Space between items */
+    justify-content: space-between; /* Evenly space items */
+  }
+  
+  .ingridentdeco {
+    flex: 1 1 calc(50% - 16px); /* Each item takes 50% width minus the gap */
+    max-width: calc(50% - 16px); /* Prevent stretching beyond half the row width */
+  }
+  
+  .ingridentdeco input {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid #ccc;
+    border-radius: 23px;
+    background-color: #e1e1e1;
+  }
+  
+  .ingredients-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+   .ingredients-input input{
+    width: 89%;
+   }
+
+   .ingredients-input button{
+      border: 1px solid;
+   }
+
+  .ingredients-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .ingredient-tag {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: gray;
+  }
+  
+  .remove-tag {
+    background: none;
+    border: none;
+    font-size: 14px;
+    margin-left: 8px;
+    cursor: pointer;
+    color: red;
+  }
+  
