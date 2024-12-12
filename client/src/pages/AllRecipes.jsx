@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../CSS/allrecipes.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getallrecipedataService } from "../service/recipeService/allRecipeService";
+import {NavLink} from 'react-router-dom'
 import {
   faAngleDoubleLeft,
   faAngleDoubleRight,
@@ -12,6 +13,7 @@ const AllRecipes = () => {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [pagecount, setPageCount] = useState(0);
+   
 
   const fetchrecipedata = async () => {
     try {
@@ -24,6 +26,15 @@ const AllRecipes = () => {
       console.log(error);
     }
   };
+
+  const userdata = recipes.map(element => {
+    return element.userData;
+  });
+
+  console.log(userdata);
+  
+  
+
   useEffect(() => {
     fetchrecipedata();
   }, [search, page]);
@@ -81,7 +92,7 @@ const AllRecipes = () => {
                       <b>{data.recipename}</b>
                     </h3>
                     <p className="card-text">{data.discription}</p>
-                    <a href="#">View Recipe</a>
+                    <NavLink to={`/getSingleRecipedata/${data._id}`}>View Recipe</NavLink>
                   </div>
                 </div>
               </div>

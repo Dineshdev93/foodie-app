@@ -11,6 +11,7 @@ import Forgotpassword from "./pages/Forgotpassword";
 import ResetPassword from "./pages/ResetPassword";
 import Createrecipe from "./pages/Createrecipe";
 import AllRecipes from "./pages/AllRecipes";
+import Singlerecipedata from "./pages/Singlerecipedata";
 function App() {
   return (
     <>
@@ -40,6 +41,7 @@ function App() {
         {/* Recipe Routes */}
         <Route path="/createRecipe" element={<Createrecipe/>}/>
         <Route path="/allrecipes" element={<AllRecipes/>}/>
+        <Route path="/getSingleRecipedata/:id" element={<Singlerecipedata/>}/>
       </Routes>
       <Footer />
     </>
