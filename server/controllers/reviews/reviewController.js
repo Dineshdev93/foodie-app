@@ -56,7 +56,7 @@ exports.getallReviewdata = async (req, res) => {
 
 exports.deleteReview = async (req, res) => { 
   const { reviewid } = req.params;
-
+   
   try {
     const deleteReview = await reviewDb.findByIdAndDelete({ _id: reviewid });
     if (deleteReview) {

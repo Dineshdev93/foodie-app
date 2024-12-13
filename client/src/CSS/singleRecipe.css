@@ -1,17 +1,4 @@
-/* .single-recipe-conatiner{
-    margin-top: 5rem;
-}
-.single-recipe-conatiner .recipe-right-part .recipe-right-part-para {
-    padding: 14px 18px 18px 14px;
-    border-radius: 14px;
-    box-shadow: 1px 0px 6px 2px #e7e7e7;
-}
-.recipe-left-part h1{
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: #F4A284;
-    font-size: 2.5rem;
-} */
+
 .single-recipe-container {
     margin-top: 5rem;
   }
@@ -70,6 +57,65 @@
     line-height: 1.6;
   }
   
+  /* review part css */
+  .create-review {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+.review-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.review-input-group {
+    margin-bottom: 20px;
+}
+
+.review-input-group textarea.form-control {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+    resize: vertical;
+}
+
+.review-input-group .form-control:focus {
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  border-color: gray;
+  outline: 0;
+  box-shadow: unset;
+}
+
+.review-submit-group {
+    text-align: right;
+}
+ 
+.review-submit-group button.btn {
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.review-submit-group button.btn:hover {
+    background-color: #499566;
+}
+.review-input-group label{
+  font-weight: 600;
+}
+
   @media (max-width: 768px) {
     .single-recipe-container {
       margin-top: 2rem;
@@ -83,10 +129,63 @@
       font-size: 2rem;
     }
   
-    
+    .image-section img{
+      width: 100%;
+    }
   
     .recipe-left-part p, .recipe-right-part p {
       font-size: 1rem;
     }
   }
-  
+
+  /*get  review section */
+  .review-card {
+    /* background-color: #fff; */
+    padding: 20px;
+    border-radius: 10px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    margin-top: 30px;
+    max-height: 200px; /* Set a fixed height for the container */
+    overflow-y: auto; /* Add vertical scroll when content exceeds the height */
+    margin-bottom: 20px; /* Space between multiple review cards */
+}
+
+
+
+.review-label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.review-username, .review-rating {
+    font-size: 16px;
+    color: #555;
+}
+
+.review-text {
+    font-size: 16px;
+    color: #444;
+    font-style: italic;
+    line-height: 1.6;
+    margin-top: 7px;
+}
+.d-flex span {
+    align-self: center;
+}
+.star-rating {
+  display: flex;
+  gap: 5px;
+}
+
+.star-filled {
+  color: #ffbc00; /* Gold color for filled stars */
+}
+
+.star-rating fastar {
+  color: #b8b0b0; /* Light gray for empty stars */
+}
+.review-text .delete{
+  color: rgb(209, 34, 34);
+  cursor: pointer;
+}
