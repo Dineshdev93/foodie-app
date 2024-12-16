@@ -1,9 +1,7 @@
 import "./App.css";
-import Header from "./components/Header";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import { Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,10 +10,15 @@ import ResetPassword from "./pages/ResetPassword";
 import Createrecipe from "./pages/Createrecipe";
 import AllRecipes from "./pages/AllRecipes";
 import Singlerecipedata from "./pages/Singlerecipedata";
+import Errorpage from "./components/Errorpage";
+import Userlayout from "./layout/Userlayout";
+import { useContext } from "react";
+import { UserContext } from "./context/Usercontext";
 function App() {
+  const {user} = useContext(UserContext)
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <ToastContainer
         position="top-center"
         autoClose={4000}
@@ -30,20 +33,29 @@ function App() {
         transition={Bounce}
       />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/forgotpassword" element={<Forgotpassword />} />
+        <Route path="/" element={<Userlayout><Home /></Userlayout>} />
+        {!user ? 
+          <Route path="/login" element={<Userlayout><Login /></Userlayout>} />
+          : ""
+      }
+        <Route path="/signup" element={<Userlayout><Signup /></Userlayout>} />
+        <Route path="/forgotpassword" element={<Userlayout><Forgotpassword /></Userlayout>} />
         <Route
           path="/resetpassword/:id/:token"
-          element={<ResetPassword />}
+          element={<Userlayout><ResetPassword /></Userlayout>}
         />
         {/* Recipe Routes */}
-        <Route path="/createRecipe" element={<Createrecipe/>}/>
-        <Route path="/allrecipes" element={<AllRecipes/>}/>
-        <Route path="/getSingleRecipedata/:id" element={<Singlerecipedata/>}/>
+        {
+          user ? 
+          <Route path="/createRecipe" element={<Userlayout><Createrecipe/></Userlayout>}/>
+          :""
+        }
+        <Route path="/allrecipes" element={<Userlayout><AllRecipes/></Userlayout>}/>
+        <Route path="/getSingleRecipedata/:id" element={<Userlayout><Singlerecipedata/></Userlayout>}/>
+
+        <Route path="*" element={<Errorpage/>}/>
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

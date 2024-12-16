@@ -75,15 +75,15 @@ export default function Home() {
                 <a
                   href={user ? "/createRecipe" : "/login"}
                   className="text-center"
-                  style={{ marginTop: "4rem" }}
+                  style={{ marginTop: "4rem", backgroundColor:"rgb(0,10,58)"}}
                 >
                   Create Recipe
-                  <span>
+                  {/* <span>
                     <FontAwesomeIcon
                       className="arrow-icon"
                       icon={faArrowRightLong}
                     />
-                  </span>
+                  </span> */}
                 </a>
               </div>
             </div>

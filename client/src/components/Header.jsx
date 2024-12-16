@@ -77,7 +77,7 @@ const Header = () => {
 </div>
       <nav
         className="navbar navbar-expand-lg navbar-dark"
-        style={{backgroundColor : "#F47822" }}
+        style={{backgroundColor : "rgb(0 10 58)" }}
       >
         <div className="container">
           {/* Brand Logo */}

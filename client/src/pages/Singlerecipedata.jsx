@@ -6,16 +6,14 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faStar, faTrash } from "@fortawesome/free-solid-svg-icons";
-import {UserContext} from '../context/Usercontext'
+import { UserContext } from "../context/Usercontext";
 import { useContext } from "react";
 export default function Singlerecipedata() {
-  const {user} = useContext(UserContext)
-  
-  
-   
+  const { user } = useContext(UserContext);
+
   const [recipes, setRecipes] = useState([]);
-  const [reviews,setReviews] = useState([])
-  
+  const [reviews, setReviews] = useState([]);
+
   // states for reviews
   const [username, setUsername] = useState("");
   const [ratings, setRatings] = useState("");
@@ -28,29 +26,39 @@ export default function Singlerecipedata() {
     },
   };
   // recipe id
-  const { id } = params;  
+  const { id } = params;
   // Get reviews
   const fetchreviews = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/review/api/getalldata/${id}`)
+      const response = await axios.get(
+        `http://localhost:8000/review/api/getalldata/${id}`
+      );
       // its reviews data
-      const {recipedata}  =response.data  ;  
-      setReviews(recipedata)
+      const { recipedata } = response.data;
+      setReviews(recipedata);
     } catch (error) {
       console.log(error);
     }
- }
-  
-//  delete reviews
-   const  deleteReview = async (reviewid) => {
-      try {
-         const deleteReview = await axios.delete(`http://localhost:8000/review/api/deletereview/${reviewid}`,config)
-         console.log(deleteReview+"data deleted succesfully");
-         
-      } catch (error) {
-        console.log(error);
-      }
-   }
+  };
+
+  //  delete reviews
+  const deleteReview = async (reviewid) => {
+    try {
+      const deleteReview = await axios.delete(
+        `http://localhost:8000/review/api/deletereview/${reviewid}`,
+        config
+      );
+
+      setReviews((preReviews)=>
+         preReviews.filter((item)=>item._id !== reviewid)
+      )
+
+      toast.success("Review deleted succesfully");
+      return deleteReview
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const fetchdata = async () => {
     try {
@@ -64,11 +72,13 @@ export default function Singlerecipedata() {
     }
   };
 
- 
+  
+
   useEffect(() => {
     fetchdata();
-    fetchreviews()
+    fetchreviews();
   }, [id]);
+  
 
   //  post review
   const reviewdata = {
@@ -76,7 +86,7 @@ export default function Singlerecipedata() {
     ratings,
     discription,
   };
-  
+
   const handlepostreview = async () => {
     try {
       if (!token) {
@@ -89,7 +99,8 @@ export default function Singlerecipedata() {
           reviewdata,
           config
         );
-        console.log(response.data);
+        const newdata = response.data ; 
+        setReviews((prereview)=>[...prereview , newdata])
         setUsername("");
         setRatings("");
         setDiscription("");
@@ -209,57 +220,59 @@ export default function Singlerecipedata() {
                 </div>
                 <hr className="mt-5 mb-3" />
                 {/*Get review section */}
-              
-               
-               {
-                reviews.map((reviewdata,i)=>{
-                  return(
+                  <h3>Reviews</h3>
+                    
+                <div className="col-md-12 mt-4 review-card" >
+                {reviews.map((reviewdata, i) => {
+                  return (
                     <>
-                <div className="col-md-12 mt-4 review-card" key={i}>
-                  <div className=" review-header">
-                    <div className="d-flex  gap-2">
-                      <span className="review-label">
-                        <FontAwesomeIcon icon={faUser} /> :
-                      </span>
-                      <span>{reviewdata.username}</span>
-                    </div>
-                  </div>
-                  <div className="review-text">
-                      {reviewdata.discription}
-                    <div className="d-flex justify-content-between">
-                      <div className="star-rating mt-1">
-                        <FontAwesomeIcon
-                          icon={faStar}
-                          className="star-filled"
-                        />
-                        <FontAwesomeIcon
-                          icon={faStar}
-                          className="star-filled"
-                        />
-                        <FontAwesomeIcon
-                          icon={faStar}
-                          className="star-filled"
-                        />
-                        <FontAwesomeIcon icon={faStar} />
-                        <FontAwesomeIcon icon={faStar} />
-                      </div>
-                      <span>{reviewdata.userId }</span>
-                      <div>
-                        {
-                          reviewdata.userId  ?
-                          <span className="delete" onClick={()=>deleteReview(reviewdata._id)}><FontAwesomeIcon icon={faTrash}/></span>
-                          : ""
-                        }
-                      </div>
-                    </div>
-                  </div>
-                  <hr />
-                </div>
+                        <div key={i} className=" review-header">
+                          <div className="d-flex  gap-2">
+                            <span className="review-label">
+                              <FontAwesomeIcon icon={faUser} /> :
+                            </span>
+                            <span>{reviewdata.username}</span>
+                          </div>
+                        </div>
+                        <div className="review-text">
+                          {reviewdata.discription}
+                          <div className="d-flex justify-content-between">
+                            <div className="star-rating mt-1">
+                              <FontAwesomeIcon
+                                icon={faStar}
+                                className="star-filled"
+                              />
+                              <FontAwesomeIcon
+                                icon={faStar}
+                                className="star-filled"
+                              />
+                              <FontAwesomeIcon
+                                icon={faStar}
+                                className="star-filled"
+                              />
+                              <FontAwesomeIcon icon={faStar} />
+                              <FontAwesomeIcon icon={faStar} />
+                            </div>
+                           
+                            <div>
+                              {user && user._id === reviewdata.userId ? (
+                                <span
+                                  className="delete"
+                                  onClick={() => deleteReview(reviewdata._id)}
+                                >
+                                  <FontAwesomeIcon icon={faTrash} />
+                                </span>
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                        <hr />
                     </>
-                  )
-                })
-               }
-
+                  );
+                })}
+                      </div>
               </div>
             </>
           );
