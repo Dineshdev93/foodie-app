@@ -18,7 +18,7 @@ const ResetPassword = () => {
     const verifyToken = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/userAuth/api/forgotpassdetails/${id}/${token}`
+          `http://192.168.168.13:8000/userAuth/api/forgotpassdetails/${id}/${token}`
         );
         if (response.status === 200) {
           setValidUser(true); // If the user is valid, set the state to true
@@ -45,7 +45,7 @@ const ResetPassword = () => {
     } else {
       try {
         const resetpassword = await axios.put(
-          `http://localhost:8000/userAuth/api/resetPassword/${id}/${token}`,
+          `http://192.168.168.13:8000/userAuth/api/resetPassword/${id}/${token}`,
           data
         );
         if (resetpassword) {

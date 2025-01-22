@@ -111,21 +111,21 @@ const Header = () => {
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="#">
+                <NavLink className="nav-link" aria-current="page" to={'/'}>
                   Home
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <NavLink className="nav-link" to={'#'}>
                   About
-                </a>
+                </NavLink>
               </li>
               {
                 user ? 
               <li className="nav-item">
-                <a className="nav-link" href="/createRecipe">
+                <NavLink className="nav-link" to={"/createRecipe"}>
                   Create Recipe
-                </a>
+                </NavLink>
               </li>
                : ""
               }

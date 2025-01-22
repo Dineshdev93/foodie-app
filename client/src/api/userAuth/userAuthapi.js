@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const api_url = "http://localhost:8000/userAuth/api/";
+const api_url = "http://192.168.168.13:8000/userAuth/api/";
 
 // Register a user 
 export const registerUser = async (formdata, config) => {

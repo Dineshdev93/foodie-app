@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import {UserContext} from '../context/Usercontext'
 import { useContext } from "react";
+import {NavLink}  from 'react-router-dom'
 export default function Home() {
   const [pizaaimg, setPizaaImg] = useState("./pizaa.png");
   const [dishplatecontent, setDishplateContent] = useState(
@@ -46,7 +47,7 @@ export default function Home() {
                 memorable.
               </p>
               <div className="hero-buttons mt-5">
-                <a href="/allrecipes" className=" me-3">
+                <NavLink to="/allrecipes" className=" me-3">
                   Explore Recipes{" "}
                   <span>
                     <FontAwesomeIcon
@@ -54,7 +55,7 @@ export default function Home() {
                       icon={faArrowRightLong}
                     />
                   </span>
-                </a>
+                </NavLink>
               </div>
             </div>
             <div className="col-md-6 rotating d-flex justify-content-center align-items-center">
@@ -72,8 +73,8 @@ export default function Home() {
               <h1 className="recipe-heading">Recipe for {heading}</h1>
               <p>{recipe}</p>
               <div className="hero-buttons mt-3 d-flex">
-                <a
-                  href={user ? "/createRecipe" : "/login"}
+                <NavLink
+                  to={user ? "/createRecipe" : "/login"}
                   className="text-center"
                   style={{ marginTop: "4rem", backgroundColor:"rgb(0,10,58)"}}
                 >
@@ -84,7 +85,7 @@ export default function Home() {
                       icon={faArrowRightLong}
                     />
                   </span> */}
-                </a>
+                </NavLink>
               </div>
             </div>
             {/* column 2nd */}

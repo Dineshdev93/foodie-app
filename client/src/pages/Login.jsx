@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../context/Usercontext";
 import axios from "axios";
-import {toast} from 'react-toastify'
+import { toast } from "react-toastify";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,19 +22,18 @@ export default function Login() {
   };
 
   const handlelogin = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
     if (email.length === 0 || password.length === 0 || conpass.length === 0) {
       setError("This field is required");
-    }
-    else if(password !== conpass){
-         toast.error("password and confirmpassword not matched !")
+    } else if (password !== conpass) {
+      toast.error("password and confirmpassword not matched !");
     }
     try {
       const response = await loginService(data);
       localStorage.setItem("authtoken", response.data.token);
       // Fetch the logged-in user data immediately after login
       const userResponse = await axios.get(
-        "http://localhost:8000/userAuth/api/verifyUser",
+        "http://192.168.168.13:8000/userAuth/api/verifyUser",
         {
           headers: { authorization: response.data.token },
         }
@@ -43,21 +42,28 @@ export default function Login() {
       navigate("/");
     } catch (error) {
       console.log(error);
-      toast.error("Invalid User deatils !")
+      toast.error("Invalid User deatils !");
     }
   };
 
   return (
     <section className="container signup_login_form_caontainer mb-5">
       <div className="row justify-content-center">
-        <div className="col-md-6  register_user">
-          <h2 className="text-center">Welcome Back!</h2>
-          <span className="subhedaing">
-            Already have an account , Plz &nbsp;{" "}
-            <NavLink to={"/signup"}>Signup Now</NavLink>
-          </span>
+        <div className="col-md-7  register_user">
+          <h2 className="text-center">Welcome back & Sign in!</h2>
+          {/* <div class="divider">
+            <span style={{ fontSize: "20px" }}>or</span>
+          </div> */}
+          {/* <div className="logingoogle ">
+            <div>
+              <img src="./google.png" width={30} alt="" />
+            </div>
+            <div>
+              <span>Log in with Google </span>
+            </div>
+          </div> */}
           <form>
-            <div className="mt-2 mb-3">
+            <div className="mt-3">
               <label for="exampleInputEmail1" className="form-label">
                 Email address
               </label>
@@ -102,42 +108,18 @@ export default function Login() {
                 </span>
               </div>
             </div>
-            <div className="mb-3 password_container">
-              <label for="exampleInputPassword2" className="form-label">
-                Confirm Password
-              </label>
-              <br />
-              <span style={{ color: "red" }}>
-                {conpass.length === 0 && error ? error : ""}
-              </span>
-              <input
-                type={conshowpass ? "text" : "password"}
-                className="form-control"
-                id="exampleInputPassword2"
-                placeholder="Enter confirm password"
-                onChange={(e) => setConpass(e.target.value)}
-              />
-              <div className="eye_icon">
-                <span
-                  onClick={() => setShowconpass(!conshowpass)}
-                  style={{ cursor: "pointer" }}
-                >
-                  <i
-                    className={
-                      conshowpass
-                        ? "fa-regular fa-eye"
-                        : "fa-regular fa-eye-slash"
-                    }
-                  ></i>
-                </span>
-              </div>
-            </div>
+           
             <div className="mb-3 forgotpasslink">
-                <NavLink  to={"/forgotpassword"}>Forfgot password</NavLink>
+              <NavLink to={"/forgotpassword"}>Forfgot password</NavLink>
             </div>
             <div className="btn_register">
               <button onClick={handlelogin}>Log in</button>
             </div>
+
+            <span className="subhedaing">
+              If you have not an account , Plz &nbsp;{" "}
+              <NavLink to={"/signup"}>Signup Now</NavLink>
+            </span>
           </form>
         </div>
       </div>

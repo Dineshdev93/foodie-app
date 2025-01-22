@@ -31,7 +31,7 @@ export default function Singlerecipedata() {
   const fetchreviews = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/review/api/getalldata/${id}`
+        `http://192.168.168.13:8000//review/api/getalldata/${id}`
       );
       // its reviews data
       const { recipedata } = response.data;
@@ -45,7 +45,7 @@ export default function Singlerecipedata() {
   const deleteReview = async (reviewid) => {
     try {
       const deleteReview = await axios.delete(
-        `http://localhost:8000/review/api/deletereview/${reviewid}`,
+        `http://192.168.168.13:8000//review/api/deletereview/${reviewid}`,
         config
       );
 
@@ -63,7 +63,7 @@ export default function Singlerecipedata() {
   const fetchdata = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/recipes/api/getSinglerecipe/${id}`
+        `http://192.168.168.13:8000/recipes/api/getSinglerecipe/${id}`
       );
       const { recipedata } = response.data;
       setRecipes([recipedata]);
@@ -95,7 +95,7 @@ export default function Singlerecipedata() {
         toast.error("Please provide details !");
       } else {
         const response = await axios.post(
-          `http://localhost:8000/review/api/createreview/${id}`,
+          `http://192.168.168.13:8000/review/api/createreview/${id}`,
           reviewdata,
           config
         );
@@ -110,7 +110,7 @@ export default function Singlerecipedata() {
       console.log(error + "Error in  catch block");
     }
   };
-
+  
   return (
     <section className="container">
       <div className="row single-recipe-container justify-content-between mb-5">

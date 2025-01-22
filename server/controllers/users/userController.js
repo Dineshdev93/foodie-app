@@ -117,7 +117,7 @@ exports.forgotpassword = async (req, res) => {
                        <h2>Password Reset Request</h2>
             <p>Hi ${userfind.firstname},</p>
             <p>You requested to reset your password. Please click on the link below to reset your password:</p>
-            <a href="http://localhost:3000/resetpassword/${userfind.id}/${settoken.verifytoken}" style="display: inline-block; padding: 10px 20px; margin: 20px 0; font-size: 16px; color: white; background-color: #4CAF50; text-decoration: none; border-radius: 5px;">Reset Password</a>
+            <a href="http://192.168.168.13:3000/resetpassword/${userfind.id}/${settoken.verifytoken}" style="display: inline-block; padding: 10px 20px; margin: 20px 0; font-size: 16px; color: white; background-color: #4CAF50; text-decoration: none; border-radius: 5px;">Reset Password</a>
             <p>If you did not request this, please ignore this email.</p>
             <p>Thank you,</p>
             <p>Your Company Name</p>
